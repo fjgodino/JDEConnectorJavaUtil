@@ -1,0 +1,13 @@
+<?xml version='1.0'  encoding='UTF-8' ?>
+   <jdeRequest type='ube' user='***' pwd='***' environment='MYENV' role='MYROLE' session=''>	
+	<ACTION TYPE='CREATE_XML' TEMPLATE_TYPE='LAUNCH_JOB'>
+		<REPORT_NAME VALUE='MYREPORT'/>
+		<REPORT_VERSION VALUE='MYVERSION'/>
+		<JARGON_SYSTEM_CODE VALUE='1'/>
+		<COMMENTS VALUE='1'/>
+		<DATA_TYPING VALUE='1'/>
+		<BUSINESS_VIEW VALUE='0'/>
+		<PRINTER_INFORMATION VALUE='0'/>
+		<POPULATED VALUE='1'/>
+	</ACTION>
+ </jdeRequest>
