@@ -5,7 +5,6 @@
  */
 package jdeconnectorjavautil;
 
-import com.jdedwards.services.objectlookup.ObjectLookupService;
 import com.jdedwards.system.connector.dynamic.ServerFailureException;
 import com.jdedwards.system.connector.dynamic.UserSession;
 import com.jdedwards.system.connector.dynamic.callmethod.ExecutableMethod;
@@ -25,30 +24,22 @@ import com.jdedwards.services.ServiceException;
 import com.jdedwards.services.objectlookup.ObjectLookupService;
 import com.jdedwards.services.objectlookup.ObjectLookupServiceLoader;
 import com.jdedwards.system.connector.dynamic.Connector;
-import com.jdedwards.system.connector.dynamic.spec.dbservices.BSFNLookupFailureException;
 import com.jdedwards.system.security.UserOCMContextSession;
 import com.jdedwards.system.xml.XMLRequest;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.StringReader;
 import java.io.StringWriter;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
-import java.util.concurrent.ConcurrentMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.zip.ZipEntry;
@@ -1374,130 +1365,7 @@ public class JDEConnectorJavaUtil {
                 
                 if (testDNS) { 
                     
-                    String[] versionElements = System.getProperty("java.version").split("\\.");
-         
-                    System.out.println(Arrays.toString(versionElements));
-                    
-                    
-                    System.out.println("-------------------------------------------------------");
-                    System.out.println("Get By Name 01 - JDE-ALPHA-ENT");
-                    System.out.println("-------------------------------------------------------");
-                    
-                    try {
-            
-                        InetAddress ipJDEServer = InetAddress.getByName("JDE-ALPHA-ENT");
-                        byte[] ip = ipJDEServer.getAddress();
-
-                        System.out.println(getIPString(ip));
-
-
-                    } catch (UnknownHostException ex) {
-                         System.out.println("Unexpected exception: " + ex.getMessage());
-                    }
-                    
-                    System.out.println("-------------------------------------------------------");
-                    System.out.println("Get By Name 02 - JDE-ALPHA-ENT");
-                    System.out.println("-------------------------------------------------------");
-                    
-                    try {
-            
-                        InetAddress ipJDEServer = InetAddress.getByName("JDE-ALPHA-ENT");
-                        byte[] ip = ipJDEServer.getAddress();
-
-                        System.out.println(getIPString(ip));
-
-
-                    } catch (UnknownHostException ex) {
-                         System.out.println("Unexpected exception: " + ex.getMessage());
-                    }
-                    
-                    System.out.println("-------------------------------------------------------");
-                    System.out.println("Register SQL Server JDE-ALPHA-SQL 65.52.119.187");
-                    System.out.println("-------------------------------------------------------");
-                     
-                    try {
-                        
-                        InetAddress ipJDEServerTmp = InetAddress.getByName("65.52.119.187");
-                        
-                        registerHostOpenJDK11("JDE-ALPHA-SQL", ipJDEServerTmp);
-                    
-                    } catch (UnknownHostException ex) {
-                        System.out.println("Unexpected exception: " + ex.getMessage());
-                    } catch (IOException ex) {
-                        Logger.getLogger(JDEConnectorJavaUtil.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    
-                    System.out.println("-------------------------------------------------------");
-                    System.out.println("Get By Name 03 - JDE-ALPHA-SQL");
-                    System.out.println("-------------------------------------------------------");
-                    
-                    try {
-            
-                        InetAddress ipJDEServer = InetAddress.getByName("JDE-ALPHA-SQL");
-                        byte[] ip = ipJDEServer.getAddress();
-
-                        System.out.println(getIPString(ip));
-
-
-                    } catch (UnknownHostException ex) {
-                         System.out.println("Unexpected exception: " + ex.getMessage());
-                    }
-                    
-                    
-                    System.out.println("-------------------------------------------------------");
-                    System.out.println("Get By IP 01");
-                    System.out.println("-------------------------------------------------------");
-        
-                    try {
-
-                        InetAddress ipJDEServer = InetAddress.getByName("138.91.73.161");
-                        byte[] ip = ipJDEServer.getAddress();
-
-                        System.out.println(getIPString(ip));
-
-
-                    } catch (UnknownHostException ex) {
-                        System.out.println("Unexpected exception: " + ex.getMessage());
-                    }
-                    
-                    if (line.hasOption("jde_user") && line.hasOption("jde_pwd") && line.hasOption("jde_role") && line.hasOption("jde_environment") && line.hasOption("sleep_time") && line.hasOption("calls")) {
-
-                        System.out.println(" jde_user: " + line.getOptionValue("jde_user"));
-                        System.out.println(" jde_pwd: " + line.getOptionValue("jde_pwd"));
-                        System.out.println(" jde_role: " + line.getOptionValue("jde_role"));
-                        System.out.println(" jde_environment: " + line.getOptionValue("jde_environment"));
-                        System.out.println(" sleep_time: " + line.getOptionValue("sleep_time"));
-                        System.out.println(" calls: " + line.getOptionValue("calls"));
-
-                        JDEConnectorJavaUtil util = new JDEConnectorJavaUtil();
-
-                        try {
-
-                            util.testDNSLogin(line.getOptionValue("jde_user"), line.getOptionValue("jde_pwd"), line.getOptionValue("jde_environment"), line.getOptionValue("jde_role"), line.getOptionValue("sleep_time"), line.getOptionValue("calls"));
-                             
-
-                        } catch (ServerFailureException ex) {
-                            System.out.println("Unexpected exception:" + ex.getMessage());
-                        } catch (InterruptedException ex) {
-                            System.out.println("Unexpected exception:" + ex.getMessage());
-                        } catch (IOException ex) {
-                            System.out.println("Unexpected exception:" + ex.getMessage());
-                        } catch (NoSuchMethodException ex) {
-                            System.out.println("Unexpected exception:" + ex.getMessage());
-                        } catch (SecurityException ex) {
-                            System.out.println("Unexpected exception:" + ex.getMessage());
-                        } catch (IllegalAccessException ex) {
-                            System.out.println("Unexpected exception:" + ex.getMessage());
-                        } catch (IllegalArgumentException ex) {
-                            System.out.println("Unexpected exception:" + ex.getMessage());
-                        } catch (InvocationTargetException ex) {
-                            System.out.println("Unexpected exception:" + ex.getMessage());
-                        }
- 
-                    } else {
-                        HelpFormatter formatter = new HelpFormatter();
-                        formatter.printHelp("java -jar JDEConnectorJavaUtil.jar", options);
-                    }
+                     JDETestDNSJava11.test(line, options);
         
                 }
 
@@ -1508,88 +1376,5 @@ public class JDEConnectorJavaUtil {
         }
 
     }
-    
-    private static void registerHostOpenJDK11(String host, InetAddress ip) throws IOException {
-
-        try {
-
-            // -------------------------------------------------------
-            // Create NameServiceAddresses using Reflection
-            // -------------------------------------------------------
- 
-            Class<?> naClass = Class.forName("java.net.InetAddress$CachedAddresses");
-           
-            Constructor<?> naConstructor = naClass.getDeclaredConstructor(String.class, InetAddress[].class, Long.TYPE);
-            naConstructor.setAccessible(true);
-            System.out.println("         java.net.InetAddress$CachedAddresses constructor accessible: " + naConstructor.toString());
-             
-            InetAddress ips[] = new InetAddress[1];
-            ips[0] = ip;
-
-            Object naObject = naConstructor.newInstance(host, ips, 100000L); 
-            System.out.println("         java.net.InetAddress$NameServiceAddresses instance: " + naObject.toString());
-            
-
-            // -------------------------------------------------------
-            // Loading Cache
-            // -------------------------------------------------------
-
-            Class<?> inetAdressClass = Class.forName("java.net.InetAddress");
-            System.out.println("         java.net.InetAddress loaded ");
-             
-            Field field = inetAdressClass.getDeclaredField("cache"); 
-            System.out.println("         java.net.InetAddressloaded - cache field loaded");
-
-            field.setAccessible(true);
-
-            @SuppressWarnings("unchecked")
-            ConcurrentMap<String, Object> result = (ConcurrentMap<String, Object>)field.get(null);
-            System.out.println("         java.net.InetAddressloaded - cache field has " + result.size() + " elements.");
-             
-            // -------------------------------------------------------
-            // Cache new host
-            // -------------------------------------------------------
-
-            result.putIfAbsent(host, naObject);
-            System.out.println("         InetAddress " + host + " Added " + ip.toString()); 
-
-        } catch (Exception e) { // NOSONAR
-
-            StringBuffer sb = new StringBuffer(500);
-            StackTraceElement[] st = e.getStackTrace();
-            sb.append(e.getClass().getName() + ": " + e.getMessage() + "\n");
-            for (int i = 0; i < st.length; i++) {
-                sb.append("\t at " + st[i].toString() + "\n");
-            }
-
-            System.out.println("         InetAddress getDeclaredMethod Error: " + e.getMessage()); 
-
-            System.out.println("         InetAddress getDeclaredMethod Trace: " + sb.toString()); 
-              
-
-        }
-
-    } 
-    
-    private static String getIPString(byte[] ipInBytes) {
-
-        StringBuilder ipSB = new StringBuilder();
-
-        int temp = 0;
-
-        for (int i = 0, j = ipInBytes.length; i < j; i++) {
-
-            temp = (int)(ipInBytes[i] & 255);
-
-            if (i != 3) {
-                ipSB.append(temp)
-                    .append(".");
-            } else {
-                ipSB.append(temp);
-            }
-        }
-
-        return ipSB.toString();
-    }
-
+     
 }
