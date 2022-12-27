@@ -9,6 +9,12 @@
         <group name="Dragon Fish Server">
             <file>file:/C:/_work/modusbox/JDEConnectorUtil/JDEConnectorJavaUtil/src/jdeconnectorjavautil/JDEConnectorJavaUtil.java</file>
         </group>
-        <group name="JDE Shader"/>
+        <group name="JDE Shader">
+            <file>file:/C:/_work/modusbox/JDEConnectorUtilNew/JDEConnectorJavaUtil/src/com/modus/jdeconnectorjavautil/SQLDriverCloudJava11.java</file>
+            <file>file:/C:/_work/modusbox/JDEConnectorUtilNew/JDEConnectorJavaUtil/src/com/modus/jdeconnectorjavautil/JDEConnectorJavaUtil.java</file>
+            <file>file:/C:/_work/modusbox/JDEConnectorUtilNew/JDEConnectorJavaUtil/src/com/modus/jdeconnectorjavautil/DNSCacheLoader.java</file>
+            <file>file:/C:/_work/modusbox/JDEConnectorUtilNew/JDEConnectorJavaUtil/src/com/modus/jdeconnectorjavautil/DNSCacheLoaderJava11.java</file>
+            <file>file:/C:/_work/modusbox/JDEConnectorUtilNew/JDEConnectorJavaUtil/src/com/modus/jdeconnectorjavautil/JDETestDNSJava11.java</file>
+        </group>
     </open-files>
 </project-private>

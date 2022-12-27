@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package jdeconnectorjavautil;
+package com.modus.jdeconnectorjavautil;
 
 import com.jdedwards.system.connector.dynamic.ServerFailureException;
 import com.jdedwards.system.connector.dynamic.UserSession;
@@ -915,6 +915,8 @@ public class JDEConnectorJavaUtil {
         this.role = role;
         
         login();
+        
+        CallBSFN();
          
 
         if (iSessionID != 0) {

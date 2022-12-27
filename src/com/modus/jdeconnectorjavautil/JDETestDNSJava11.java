@@ -1,8 +1,8 @@
-/*
+    /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package jdeconnectorjavautil;
+package com.modus.jdeconnectorjavautil;
 
 import com.jdedwards.system.connector.dynamic.ServerFailureException;
 import java.io.IOException;

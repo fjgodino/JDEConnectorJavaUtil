@@ -1,7 +1,7 @@
 /**
  * Copyright (C) 2016, W Modus LLC. All rights reserved.
  */
-package jdeconnectorjavautil;
+package com.modus.jdeconnectorjavautil;
 
 import java.io.IOException; 
 import java.lang.reflect.InvocationTargetException;
